@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adding post :: Post board</title>
+</head>
+<body>
+    <h1>Adding post</h1>
+    <div>
+        <a href="{% url 'index' %}">Main page</a>
+        {% for rubric in rubrics %}
+        <a href="{% url 'by_rubric' rubric.pk %}">
+            {{ rubric.name }}</a>
+        {% endfor %}
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Add">
+    </form>
+</body>
+</html>
